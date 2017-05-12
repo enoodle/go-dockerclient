@@ -305,12 +305,12 @@ type PullImageOptions struct {
 // opts.OutputStream.
 //
 // See https://goo.gl/qkoSsn for more details.
-func (c *Client) PullImage(opts PullImageOptions, auth AuthConfiguration) error {
+func (c *Client) PullImage(opts PullImageOptions, auths AuthConfigurations) error {
 	if opts.Repository == "" {
 		return ErrNoSuchImage
 	}
 
-	headers, err := headersWithAuth(auth)
+	headers, err := headersWithAuth(auths)
 	if err != nil {
 		return err
 	}
